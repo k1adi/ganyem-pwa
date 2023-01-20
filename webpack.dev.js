@@ -1,6 +1,6 @@
 const path = require('path');
-const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -8,13 +8,13 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/images/[name][ext]',
     filename: 'bundle.js',
-    clean: true
+    clean: true,
   },
   devtool: 'inline-source-map',
   devServer: {
     static: path.resolve(__dirname, 'src'),
     open: true,
-    port: 9000,
+    port: 9090,
     client: {
       overlay: {
         errors: true,

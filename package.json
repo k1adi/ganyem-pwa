@@ -4,10 +4,10 @@
   "description": "Submission MFWDE Dicoding",
   "private": true,
   "scripts": {
+    "test": "karma start",
     "test-lint": "eslint --ext .js ./src",
-    "build": "webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server --config webpack.dev.js",
-    "test": "karma start"
+    "start-build": "webpack --config webpack.prod.js",
+    "start-dev": "webpack-dev-server --config webpack.dev.js"
   },
   "keywords": [],
   "author": "k1adi",
@@ -44,6 +44,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "axios": "^1.2.3",
     "regenerator-runtime": "^0.13.9",
     "swiper": "^8.4.5"
   }
