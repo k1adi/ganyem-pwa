@@ -1,0 +1,146 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+%container{
+  display: block;
+  position: relative;
+  height: auto;
+}
+.container {
+  &--full-width{
+    @extend %container;
+  }
+
+  &--full-height{
+    @extend %container;
+    min-height: 100%
+  }
+
+  &--wrap{
+    @extend %container;
+    width: $relative-width;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &--padding-y{
+    padding: 4rem 0;
+  }
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+ * Button skip-to-main-content
+ * Accessibility for keyboard-only users
+*/
+#skip-to-content{
+  position: fixed;
+  top: -100px;
+  left: 0;
+  padding: .75rem 1.5rem;
+  color: $txt-dark;
+  font-weight: 500;
+  border-radius: .3rem;
+  background-color: $primary;
+  z-index: 999;
+
+  &:focus{
+    top: 0;
+  }
+}
+
+.toggle-theme{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  padding: .5rem .4rem;
+  border: solid 2px var(--txt-base);
+  border-radius: .5rem 0 0 .5rem;
+  background-color: var(--txt-base);
+  @include transform('translateY(-50%)');
+
+  &:hover &__text,
+  &:focus &__text{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__icon{
+    font-size: 1.85rem;
+    color: var(--bg-color);
+    cursor: pointer;
+  }
+
+  &__text{
+    position: absolute;
+    top: 9%;
+    right: 3rem;
+    font-weight: 500;
+    color: var(--txt-base);
+    font-family: $font-family-base;
+    display: block;
+    font-size: .85rem;
+    white-space: nowrap;
+    background-color: var(--bg-muted);
+    border: solid 2px var(--txt-base);
+    padding: .5rem .75rem;
+    border-radius: .3rem;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @include breakpoint-screen-min('md'){
+    &__icon{
+      width: 1.65rem;
+    }
+
+    &__text{
+      top: 5%;
+      right: 3rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+/**
+ * Background color
+*/
+.bg{
+  &--primary{
+    background-color: $primary;
+  }
+}

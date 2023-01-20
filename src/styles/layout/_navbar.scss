@@ -1,0 +1,152 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the navbar of the site/application.
+// -----------------------------------------------------------------------------
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  padding: 1rem 0 .65rem;
+
+  &__logo{
+    & > img{
+      width: auto;
+      height: 3.5rem;  
+    }
+  }
+
+  &__toggle{
+    cursor: pointer;
+    border: none;
+    padding: .5rem;
+    background-color: transparent;
+
+    &-btn{
+      display: inline-block;
+      width: 30px;
+      height: 25px;
+      position: relative;
+      @include transform('rotate(0deg)');
+      @include transition(.5s);
+
+      span{
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background-color: var(--txt-base);
+        border-radius: .5rem;
+        opacity: 1;
+        left: 0;
+        @include transform('rotate(0deg)');
+        @include transition(.25s);
+
+        &:nth-child(1){
+          top: 0px;
+        }
+
+        &:nth-child(2),
+        &:nth-child(4){
+          top: 50%;
+          @include transform('translateY(-50%)');
+        }
+        
+        &:nth-child(3){
+          bottom: 0;
+        }
+      }
+
+      &.active{
+        span{
+          &:nth-child(1),
+          &:nth-child(3){
+            opacity: 0;
+            visibility: hidden;
+            top: 50%;
+            @include transform('translateY(-50%)');
+          }
+
+          &:nth-child(2){
+            @include transform('rotate(45deg)');
+          }
+          &:nth-child(4){
+            @include transform('rotate(-45deg)');
+          }
+        }
+      }
+
+      @include breakpoint-screen-min('md'){
+        display: none;  
+      }
+    }
+  }
+
+  &__list{
+    position: fixed;
+    top: 86px;
+    left: 0;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100vw;
+    background-color: var(--bg-muted);
+    z-index: 6;
+
+    &.active{
+      &::before{
+        content: ' ';
+        width: 100%;
+        height: calc(100vh - 319px);
+        position: absolute;
+        top: 319px;
+        left: 0;
+        z-index: -1 !important;
+        backdrop-filter: blur(5px);
+        background-color: rgba($color: $bg-light, $alpha: .6);
+      }
+    }
+
+    &__item{
+      &:not(:last-child){
+        border-bottom: solid 1px var(--nav-border);
+      }
+
+      & > a{
+        display: block;
+        padding: 1.5rem 1rem;
+        font-weight: 500;
+        color: var(--txt-base);
+        border-bottom: solid 3px transparent;
+
+        &:hover,
+        &:focus{
+          color: $primary;
+          border-bottom: solid 3px $primary;
+        }
+      }
+    }
+
+    @include breakpoint-screen-min('md'){
+      position: relative;
+      top: 0;
+      width: auto;
+      background-color: transparent;
+
+      &__item{
+        display: inline;
+        padding: 0 1rem;
+        
+        &:not(:last-child){
+          border-bottom: none;
+        }
+        & > a{
+          display: inline-block;
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}

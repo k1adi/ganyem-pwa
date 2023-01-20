@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.footer{
+  & > p{
+    font-size: 1.15rem;
+    margin-bottom: .5rem;
+  }
+
+  .footer{
+    &__link{
+      color: inherit;
+      padding: 1rem 0;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.btn{
+  display: inline-block;
+  font-weight: 500;
+  padding: .8rem 2rem;
+  border-radius: .4rem;
+  cursor: pointer;
+
+  &--primary{
+    color: black;
+    background-color: $primary;
+  }
+}

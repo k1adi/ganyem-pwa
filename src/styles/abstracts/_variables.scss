@@ -1,0 +1,76 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$font-family-base: 'Rubik', sans-serif !default;
+
+/// Heading font family
+/// @type List
+$font-family-heading: 'Chewy', cursive !default;
+
+/// Quote font family
+/// @type List
+$font-family-quote: 'Catamaran', sans-serif !default;
+
+/// Font Size Base
+/// @type Size
+$font-size-base: 18px;
+$font-size-sm: 16px; 
+
+
+/// Primary & Secondary Color
+/// @type Color
+$primary: #FFCC1D !default;
+$secondary: #116530 !default;
+
+
+/// Light Theme List
+/// @type Color
+$bg-light: #F7F7F7 !default;
+$bg-light-muted: #E4E4E4 !default;
+$txt-light: #EFF0F1 !default;
+$txt-light-muted: #818991 !default;
+$nav-light: #D6D6D6 !default;
+$box-shadow-light: rgba(128, 128, 128, 0.2) !default;
+
+/// Dark Theme List
+/// @type Color
+$bg-dark: #202124 !default;
+$bg-dark-muted: #414141 !default;
+$txt-dark: $bg-dark !default;
+$txt-dark-muted: #C0C5CA !default;
+$nav-dark: rgba(129, 99, 1, 0.5) !default;
+$box-shadow-dark: rgb(61, 61, 61) !default;
+
+/// Light & Dark Theme Array
+/// 1. background-color, 2. background-color-muted, 3. navigation-border
+/// 4. text-heading, 5. text-base, 6. text-muted, 7. Box-shadow
+/// @type List
+$light-theme: $bg-light, $bg-light-muted, $nav-light, $txt-dark, $txt-dark, $txt-light-muted, $box-shadow-light;
+$dark-theme: $bg-dark, $bg-dark-muted, $nav-dark, $primary, $txt-light, $txt-dark-muted, $box-shadow-dark;
+
+
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1440px !default;
+
+/// Container's relative width for small screen
+/// @type Length
+$relative-width: 92% !default;
+
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'xs': 440px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+) !default;
