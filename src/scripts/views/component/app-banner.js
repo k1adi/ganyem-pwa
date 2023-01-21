@@ -3,6 +3,7 @@ class AppBanner extends HTMLElement {
     this.ctaStatus = this.getAttribute('data-cta');
     this.ctaText = this.getAttribute('data-cta-text');
     this.bannerTitle = this.getAttribute('data-title');
+    this.titleAlign = this.getAttribute('data-title-align') || '';
 
     this.render();
   }
@@ -10,7 +11,7 @@ class AppBanner extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="container--wrap">
-        <h1 class="banner__title">${this.bannerTitle}</h1>
+        <h1 class="banner__title ${this.titleAlign}">${this.bannerTitle}</h1>
         ${this.ctaStatus ? `
           <a class="btn btn--primary" tabindex="0" data-target="#resto">${this.ctaText}</a>
         ` : ''}
