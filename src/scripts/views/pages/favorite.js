@@ -1,6 +1,10 @@
+import '../component/app-banner';
+
 const Favorite = {
   async render() {
-    console.log('render favorite');
+    return `
+      <app-banner data-title="Favorite Resto's" data-title-align="text-center" class="banner banner--favorite"></app-banner>
+    `;
   },
 
   async afterRender() {
