@@ -1,7 +1,7 @@
 {
-  "name": "ganyem",
+  "name": "ganyem-pwa",
   "version": "1.0.0",
-  "description": "Submission MFWDE Dicoding",
+  "description": "Submission MFWDE Dicoding Katalog Restaurant with PWA",
   "private": true,
   "scripts": {
     "test": "karma start",
