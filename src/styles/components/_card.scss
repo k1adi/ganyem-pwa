@@ -5,7 +5,6 @@
       gap: 1rem;
       grid-template-columns: 1fr;
       margin-top: 2.5rem;
-      justify-content: center;
     }
 
     &--order{
@@ -68,6 +67,12 @@
     &__desc{
       color: var(--txt-muted);
       margin-bottom: 0;
+    }
+
+    &__button{
+      grid-column: 1 / 2;
+      text-align: center;
+      margin-top: 1.25rem;
     }
   }
 
@@ -137,6 +142,12 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    
+    &--resto{ 
+      &__button{
+        grid-column: 1 / 3;
+      }
+    }
   }
 
   @include breakpoint-screen-min('sm'){
@@ -151,6 +162,12 @@
     &-wrapper{
       &--resto{
         grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &--resto{ 
+      &__button{
+        grid-column: 1 / 4;
       }
     }
   }
