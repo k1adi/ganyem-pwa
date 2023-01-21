@@ -14,12 +14,10 @@ class RestoWrapper extends HTMLElement {
   render() {
     removeCurrentPlaceholder(this);
     this._restoList.forEach((data) => {
-      if (data.rating > 4.5) {
-        const cardResto = document.createElement('card-resto');
-        cardResto.setAttribute('class', 'card--resto');
-        cardResto.item = data;
-        this.appendChild(cardResto);
-      }
+      const cardResto = document.createElement('card-resto');
+      cardResto.setAttribute('class', 'card--resto');
+      cardResto.item = data;
+      this.appendChild(cardResto);
     });
   }
 }
