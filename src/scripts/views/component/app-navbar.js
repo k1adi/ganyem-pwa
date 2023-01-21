@@ -12,7 +12,7 @@ class AppNavbar extends HTMLElement {
         <span class="toggle-theme__text">Toggle High Contrast</span>
       </button>
       <nav class="nav">
-        <a href="/" class="nav__logo">
+        <a href="/#" class="nav__logo">
           <img src="${navLogo}" alt="Ganyem">
         </a>
 

@@ -13,7 +13,7 @@ class HeaderNav {
 
   _navItemList() {
     const navItem = [
-      { text: 'Home', url: '/' },
+      { text: 'Home', url: '/#' },
       { text: 'Restaurants', url: '/#/restaurants' },
       { text: 'Favorite', url: '/#/favorite' },
       { text: 'About Us', url: 'https://www.linkedin.com/in/kiadi/', target: '_blank' },
