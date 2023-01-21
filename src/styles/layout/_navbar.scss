@@ -99,9 +99,9 @@
       &::before{
         content: ' ';
         width: 100%;
-        height: calc(100vh - 319px);
+        height: calc(100vh - 283px);
         position: absolute;
-        top: 319px;
+        top: 283px;
         left: 0;
         z-index: -1 !important;
         backdrop-filter: blur(5px);
@@ -125,6 +125,15 @@
         &:focus{
           color: $primary;
           border-bottom: solid 3px $primary;
+        }
+      }
+    }
+
+    @include breakpoint-screen-min('sm'){
+      &.active{
+        &::before{
+          height: calc(100vh - 319px);
+          top: 319px;
         }
       }
     }
