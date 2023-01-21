@@ -52,6 +52,9 @@ $light-theme: $bg-light, $bg-light-muted, $nav-light, $txt-dark, $txt-dark, $txt
 $dark-theme: $bg-dark, $bg-dark-muted, $nav-dark, $primary, $txt-light, $txt-dark-muted, $box-shadow-dark;
 
 
+$placeholder-background: rgb(121, 121, 121) !default;
+$placeholder-animation: 'rgba(202, 202, 202' !default;
+
 
 /// Container's maximum width
 /// @type Length
@@ -60,7 +63,6 @@ $max-width: 1440px !default;
 /// Container's relative width for small screen
 /// @type Length
 $relative-width: 92% !default;
-
 
 
 /// Breakpoints map

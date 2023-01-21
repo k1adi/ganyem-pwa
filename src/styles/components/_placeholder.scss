@@ -1,0 +1,28 @@
+@keyframes placeholder-animation{
+  0%{
+    left: -100%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+
+.placeholder{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $placeholder-background;
+  overflow: hidden;
+  border-radius: .3rem;
+
+  & > .animation{
+    position: absolute;
+    left: -45%;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    @include animate('placeholder-animation', '1.25s', 'normal', 'infinite');
+    @include linear-gradient('to left', ('#{$placeholder-animation}, .04)', '#{$placeholder-animation}, .3)', '#{$placeholder-animation}, .5)', '#{$placeholder-animation}, .3)', '#{$placeholder-animation}, .04)')); 
+  }
+}

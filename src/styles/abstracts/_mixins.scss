@@ -90,3 +90,12 @@
     #{$browser}: #{$name} #{$duration} #{$direction} #{$count};
   }
 }
+
+// Create linear gradient
+// https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
+@mixin linear-gradient($direction, $gradients){
+  $compatible: 'linear-gradient', '-moz-linear-gradient', '-webkit-linear-gradient';
+  @each $browser in $compatible{
+    background: #{$browser}(#{$direction}, #{$gradients});
+  }
+}
