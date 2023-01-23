@@ -42,36 +42,22 @@ review-wrapper{
     background-color: var(--bg-color);
     @include box-shadow('0px', '5px', '15px', '0px', var(--box-shadow));
 
-    &::before{
-      content: '"';
-      font-family: $font-family-quote;
-      position: absolute;
-      line-height: 1rem;
-      font-size: 8.5rem;
-      color: var(--txt-muted);
-      opacity: .15;
-      top: 2.6rem;
-      left: 1.25rem;
-      @include transform('rotate(180deg)');
-    }
-
     &__resto{
       position: relative;
       padding: 0 0 .75rem;
       z-index: 1;
 
-      & > a{
+      &-name{
         display: inline-block;
         font-size: 1.25rem;
         color: var(--txt-title);
         font-weight: 500;
-        text-decoration: underline;
         padding:1rem 0 .25rem;
       }
     }
 
     &__text{
-      text-indent: 1rem;
+      margin-bottom: .5rem;
     }
 
     &__profile{

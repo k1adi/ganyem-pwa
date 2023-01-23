@@ -10,6 +10,15 @@ class RestoSource {
       throw new Error(err);
     }
   }
+
+  static async getDetailResto(id) {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_DETAIL_RESTO(id));
+      return Promise.resolve(response.data);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 export default RestoSource;
