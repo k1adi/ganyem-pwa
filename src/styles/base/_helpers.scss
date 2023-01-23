@@ -31,7 +31,13 @@
   }
 
   &--padding-y{
-    padding: 4rem 0;
+    padding: 2rem 0;
+  }
+  
+  @include breakpoint-screen-min('md'){
+    &--padding-y{
+      padding: 4rem 0;
+    } 
   }
 }
 
@@ -76,6 +82,8 @@
   font-weight: 500;
   border-radius: .3rem;
   background-color: $primary;
+  font-family: inherit;
+  font-size: inherit;
   z-index: 999;
 
   &:focus{

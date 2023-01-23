@@ -50,8 +50,9 @@ class App {
   _skipToMainContent() {
     this._skipButton.addEventListener('click', (event) => {
       event.preventDefault();
-      this._mainContent.tabIndex = 0;
-      this._mainContent.focus();
+      const elemTarget = document.querySelector('#mainContent');
+      elemTarget.tabIndex = 0;
+      elemTarget.focus();
     });
   }
 
@@ -61,6 +62,10 @@ class App {
   }
 
   async renderPage() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = (routes[url] !== undefined) ? routes[url] : routes['/not-found'];
     this._mainContent.innerHTML = await page.render();
