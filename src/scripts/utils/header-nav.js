@@ -26,8 +26,24 @@ class HeaderNav {
     `).join('');
   }
 
+  _handleNavMobile(event) {
+    event.stopPropagation();
+    const navWrapper = this.parentNode.parentNode;
+    const navToggle = navWrapper.querySelector('.nav__toggle');
+    navToggle.click();
+  }
+
   _showNavItem() {
     this._navList.insertAdjacentHTML('afterbegin', this._navItem);
+
+    const navListItem = this._navList.querySelectorAll('.nav__list__item');
+    navListItem.forEach((element) => {
+      if (window.screen.width < this._maxTabletScreen) {
+        element.addEventListener('click', this._handleNavMobile);
+      } else {
+        element.removeEventListener('click', this._handleNavMobile);
+      }
+    });
   }
 
   _removeNavItem() {
@@ -62,12 +78,14 @@ class HeaderNav {
     if (!tabKey) {
       return;
     }
+
     const checkActiveElement = (elementActivated, nextElement) => {
       if (document.activeElement === elementActivated) {
         nextElement.focus();
         event.preventDefault();
       }
     };
+
     if (event.shiftKey) {
       checkActiveElement(firstFocusableElem, lastFocusableElem);
     } else {
