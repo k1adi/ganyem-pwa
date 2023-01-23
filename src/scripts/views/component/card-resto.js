@@ -19,7 +19,7 @@ class CardResto extends HTMLElement {
       <div class="card--resto__body">
         <h3 class="card--resto__title">${name}</h3>
         <span class="card__rating">
-          <i class="fa-solid fa-star"></i> ${rating}
+          <i class="fa-solid fa-star" aria-label="rating"></i> ${rating}
         </span>
         <p class="card--resto__desc">${description.substring(0, 120)}</p>
         <div class="card__link">

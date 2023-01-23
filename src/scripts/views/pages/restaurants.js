@@ -7,8 +7,9 @@ const Restaurants = {
   async render() {
     return `
       <app-banner data-title="Restaurants" data-title-align="text-center" class="banner banner--resto"></app-banner>
-      <section class="container--wrap container--padding-y" id="resto">
-        <resto-wrapper class="card-wrapper--resto"></resto-wrapper>
+
+      <section class="container--wrap container--padding-y"  id="mainContent">
+        <resto-wrapper class="card-wrapper--resto margin-top-none"></resto-wrapper>
       </section>
     `;
   },
@@ -19,7 +20,8 @@ const Restaurants = {
       const getResto = await RestoSource.getAllResto();
       restoWrapper.restoList = getResto.restaurants;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      restoWrapper.renderError('Failed to Fetch Restaurant Data');
     }
   },
 };

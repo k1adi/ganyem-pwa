@@ -20,6 +20,16 @@ class RestoWrapper extends HTMLElement {
       this.appendChild(cardResto);
     });
   }
+
+  renderError(message) {
+    removeCurrentPlaceholder(this);
+    this.innerHTML = `
+      <div class="card--resto__error">
+        <h2 class="text--title">Oops...</h2>
+        <p>${message}</p>
+      </div>
+    `;
+  }
 }
 
 customElements.define('resto-wrapper', RestoWrapper);

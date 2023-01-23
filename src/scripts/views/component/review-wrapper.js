@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 
 class ReviewWrapper extends HTMLElement {
   set item(data) {
-    this._review = data.reviews;
+    this._review = data;
     this.render();
   }
 
@@ -26,15 +26,24 @@ class ReviewWrapper extends HTMLElement {
         <div class="swiper-slide">
           <div class="swiper--review">
             <div class="swiper--review__resto">
-              <a href="javascript:void(0)" aria-label="${data.restaurant} review">${data.restaurant}</a>
+              ${(data?.restaurant) ? `
+                <span class="swiper--review__resto-name">${data.restaurant}</span>
+              ` : ''}
+              ${(data?.rating) ? `
               <span class="card__rating">
-                <i class="fa-solid fa-star"></i> ${data.rating}
+                <i class="fa-solid fa-star"></i> ${data?.rating}
               </span>
+              ` : ''}
             </div>
             <p class="swiper--review__text">${data.review}</p>
             <div class="swiper--review__profile">
-              <img src="${data.profilePicture}" alt="Profile picture">
-              <p>${data.name}</p>
+              <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User profile">
+              <span>
+                <p>${data.name}</p>
+                ${(data?.date) ? `
+                  <small>${data.date}</small>
+                ` : ''}
+              </span>
             </div>
           </div>
         </div>
@@ -56,13 +65,13 @@ class ReviewWrapper extends HTMLElement {
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
+        clickable: true,
       },
       a11y: {
         containerMessage: 'Customer Review Sliders',
         firstSlideMessage: 'This is the first review',
         lastSlideMessage: 'This is the last review',
-        prevSlideMessage: 'Previous slide',
-        nextSlideMessage: 'Next slide',
+        paginationBulletMessage: 'Go to slide {{index}} review',
         notificationClass: 'visual-hidden',
       },
       on: {

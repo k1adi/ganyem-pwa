@@ -33,7 +33,7 @@ const Home = {
     return `
       <app-banner data-title="Find Any Foods or Restaurants at Ganyem" data-cta="true" data-cta-text="Find Resto" class="banner banner--home"></app-banner>
 
-      <section class="container--wrap container--padding-y" id="resto">
+      <section class="container--wrap container--padding-y" id="mainContent">
         <h2 class="text--title text--align-center">Find The Best Resto</h2>
         <resto-wrapper class="card-wrapper--resto"></resto-wrapper>
       </section>
@@ -74,12 +74,13 @@ const Home = {
         </div>
       `);
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      restoWrapper.renderError('Failed to Fetch Restaurant Data');
     }
 
     // Review Section
     const reviewWrapper = document.querySelector('review-wrapper');
-    reviewWrapper.item = review;
+    reviewWrapper.item = review.reviews;
   },
 };
 
