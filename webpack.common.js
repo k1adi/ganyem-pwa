@@ -19,6 +19,8 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: './src/images/favicon.png',
       prefix: 'assets/favicon/',
+      mode: 'webapp',
+      devMode: 'webapp',
       cache: true,
       inject: true,
       favicons: {
@@ -30,7 +32,7 @@ module.exports = {
         developerURL: 'https://github.com/k1adi',
         start_url: '/index.html',
         display: 'standalone',
-        orientation: 'potrait',
+        orientation: 'any',
         background: '#fff',
         theme_color: '#FFCC1D',
         loadManifestWithCredentials: true,
@@ -46,6 +48,7 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.js',
+      maximumFileSizeToCacheInBytes: 5000000,
       exclude: [/\.(?:png|jpg|jpeg|svg|)$/],
       runtimeCaching: [
         {
