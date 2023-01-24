@@ -19,10 +19,13 @@ const PostRestoReview = {
         }), {});
         const result = await RestoSource.postRestoReview(formObject);
         reviewWrapper.item = result.customerReviews;
+
         ToastComponent.init({
           toastStatus: 'toastify--success',
           toastMessage: 'Review sent successfully',
         });
+
+        event.target.reset();
       } catch (err) {
         console.error(err);
         ToastComponent.init({
@@ -30,8 +33,6 @@ const PostRestoReview = {
           toastMessage: 'Review failed to submit',
         });
       }
-
-      event.target.reset();
     });
   },
 };

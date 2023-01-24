@@ -15,6 +15,7 @@
   background-color: var(--bg-muted);
   overflow: hidden;
   border-radius: .3rem;
+  cursor: wait;
 
   & > .animation{
     position: absolute;
