@@ -1,0 +1,14 @@
+.toastify{
+  border-radius: .3rem !important;
+
+  &-close{
+    padding-left: 1rem !important;
+  }
+  &--success{
+    background: $success !important;
+  }
+
+  &--failed{
+    background: $failed !important;
+  }
+}
