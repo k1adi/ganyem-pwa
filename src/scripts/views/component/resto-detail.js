@@ -2,6 +2,7 @@ import ImageHelper from '../../utils/image-helpers';
 import API_ENDPOINT from '../../global/api-endpoint';
 import { createRestoDetailPlaceholder, removeCurrentPlaceholder } from '../ui-component/placeholder';
 import './review-wrapper';
+import './form-review';
 
 class RestoDetail extends HTMLElement {
   set resto(data) {
@@ -15,7 +16,7 @@ class RestoDetail extends HTMLElement {
 
   render() {
     // eslint-disable-next-line
-    const { pictureId, name, city, address, rating, description, categories, menus, customerReviews } = this._resto;
+    const { id, pictureId, categories, name, city, address, rating, description, menus, customerReviews } = this._resto;
 
     removeCurrentPlaceholder(this);
     this.innerHTML = `
@@ -37,14 +38,13 @@ class RestoDetail extends HTMLElement {
         <p class="text--muted" aria-label="Address at">
           ${address}, ${city}
         </p>
-      </div>
-
-      <div class="detail-wrapper__desc">
         <div class="detail-card__section">
           <h2>Resto Description: </h2>
           <p class="text--muted">${description}</p>
         </div>
+      </div>
 
+      <div class="detail-wrapper__desc">
         <div class="detail-card__section">
           <h2>Food's</h2>
           <ol class="detail-card__menu" aria-label="Food menu list">
@@ -63,8 +63,15 @@ class RestoDetail extends HTMLElement {
           </ol>
         </div>
 
-        <h2>Review's</h2>
-        <review-wrapper></review-wrapper>
+        <div class="detail-card__section">
+          <h2>Customer Review's</h2>
+          <review-wrapper></review-wrapper>
+        </div>
+
+        <div class="detail-card__section">
+          <h2>Post a Review</h2>
+          <form-review></form-review>
+        </div>
       </div>
     `;
 
@@ -74,11 +81,13 @@ class RestoDetail extends HTMLElement {
       imgSource: `${API_ENDPOINT.GET_IMG_RESTO('medium')}/${pictureId}`,
       imgAlt: 'Thumbnail Resto',
     });
-
     imageHelper.asyncLoadImage();
 
     const reviewWrapper = this.querySelector('review-wrapper');
     reviewWrapper.item = customerReviews;
+
+    const formReview = this.querySelector('form-review');
+    formReview.id = id;
   }
 
   renderError(message) {

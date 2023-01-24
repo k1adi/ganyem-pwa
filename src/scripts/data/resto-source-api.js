@@ -19,6 +19,15 @@ class RestoSource {
       throw new Error(err);
     }
   }
+
+  static async postRestoReview(bodyJson) {
+    try {
+      const response = await axios.post(API_ENDPOINT.POST_REVIEW, bodyJson);
+      return Promise.resolve(response.data);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 export default RestoSource;

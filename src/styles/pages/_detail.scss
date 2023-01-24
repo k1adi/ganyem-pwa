@@ -15,12 +15,6 @@
       @include box-shadow('0px', '5px', '15px', '0px', var(--box-shadow));
     }
 
-    &__desc{
-      h2{
-        margin-bottom: .25rem;
-      }
-    }
-
     &__error{
       flex-basis: 100%;
       width: 100%;
@@ -184,6 +178,10 @@
       display: block;
       position: relative;
       margin-bottom: 2rem;
+
+      h2{
+        margin-bottom: .25rem;
+      }
     }
   }
 
