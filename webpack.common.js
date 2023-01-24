@@ -2,11 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
-    // sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,7 +22,7 @@ module.exports = {
       cache: true,
       inject: true,
       favicons: {
-        path: '/',
+        path: '/assets/favicon/',
         appName: 'Ganyem',
         appShortName: 'Ganyem',
         appDescription: 'Submission MFWDE Dicoding Restaurant Catalog with PWA',
@@ -34,7 +34,6 @@ module.exports = {
         background: '#fff',
         theme_color: '#FFCC1D',
         loadManifestWithCredentials: true,
-        manifestMaskable: true,
         icons: {
           android: true,
           appleIcon: true,
@@ -44,6 +43,49 @@ module.exports = {
           yandex: true,
         },
       },
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.js',
+      exclude: [/\.(?:png|jpg|jpeg|svg|)$/],
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+            },
+          },
+        },
+        {
+          urlPattern: /^https:\/\/restaurant-api\.dicoding\.dev\/(?:(list|detail))/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'resto-api',
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+            },
+          },
+        },
+        {
+          urlPattern: ({ request }) => request.destination === 'image',
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'resto-image',
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+            },
+          },
+        },
+      ],
+      skipWaiting: true,
     }),
   ],
   module: {

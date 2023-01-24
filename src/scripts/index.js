@@ -2,6 +2,7 @@ import 'regenerator-runtime';
 import '../styles/main.scss';
 
 import App from './views/app';
+import swRegister from './utils/sw-register';
 
 // Components
 import './views/component/app-navbar';
@@ -24,4 +25,5 @@ window.addEventListener('hashchange', async () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
   await app.renderPage();
+  await swRegister();
 });
