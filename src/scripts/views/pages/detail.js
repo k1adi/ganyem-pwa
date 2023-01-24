@@ -9,7 +9,7 @@ const Detail = {
     return `
       <app-banner data-title="Restaurants" data-title-align="text-center" class="banner banner--resto"></app-banner>
 
-      <section class="container--wrap container--padding-y">
+      <section class="container--wrap container--padding-y" id="mainContent">
         <resto-detail class="detail-wrapper"></resto-detail>
       </section>
 
