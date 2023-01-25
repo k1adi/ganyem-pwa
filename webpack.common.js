@@ -87,6 +87,19 @@ module.exports = {
             },
           },
         },
+        {
+          urlPattern: /https:\/\/use.fontawesome.com\/2678a3056c.css/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'fontawesome-font-stylesheet',
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+            expiration: {
+              maxEntries: 30,
+            },
+          },
+        },
       ],
       skipWaiting: true,
     }),
